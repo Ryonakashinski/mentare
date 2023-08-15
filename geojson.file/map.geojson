@@ -1,0 +1,21 @@
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Museum aan de Stroom",
+    "country": "Belgium",
+    "country_code": "be",
+    "region": "Flanders",
+    "state": "Antwerp",
+    "city": "Antwerp",
+    "postcode": "2000",
+    "street": "Hanzestedenplaats",
+    "housenumber": "1",
+    "lon": 4.404732087,
+    "lat": 51.22893535,
+    "formatted": "Museum aan de Stroom, Hanzestedenplaats 1, 2000 Antwerp, Belgium"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [4.404732087, 51.22893535]
+  }
+}

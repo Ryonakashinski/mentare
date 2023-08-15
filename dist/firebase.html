@@ -1,0 +1,85 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  // 日時をいい感じの形式にする関数
+  function convertTimestampToDatetime(timestamp) {
+    const _d = timestamp ? new Date(timestamp * 1000) : new Date();
+    const Y = _d.getFullYear();
+    const m = (_d.getMonth() + 1).toString().padStart(2, "0");
+    const d = _d.getDate().toString().padStart(2, "0");
+    const H = _d.getHours().toString().padStart(2, "0");
+    const i = _d.getMinutes().toString().padStart(2, "0");
+    const s = _d.getSeconds().toString().padStart(2, "0");
+    return `${Y}/${m}/${d} ${H}:${i}:${s}`;
+  }
+</script>
+<!-- firebase -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+    onSnapshot,
+  } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyApaD_ljhGSaG9jHmjqjSPXcScBbUcbkyI",
+    authDomain: "map-chat-ryo.firebaseapp.com",
+    projectId: "map-chat-ryo",
+    storageBucket: "map-chat-ryo.appspot.com",
+    messagingSenderId: "480374890328",
+    appId: "1:480374890328:web:1f970901ba52bec8ba0f2d",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+
+  // send the data to firebase.
+  $("#send").on("click", function (event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    const postData = {
+      name: $("#name").val(),
+      text: $("#text").val(),
+      time: serverTimestamp(),
+    };
+    addDoc(collection(db, "ryo-map"), postData);
+    $("#text").val("");
+  });
+
+  // acquire the data.
+  onSnapshot(collection(db, "ryo-map"), (querySnapshot) => {
+    // console.log(querySnapshot.docs); //'docs' is data on firebase.
+
+    // take out the data.
+    const documents = [];
+    querySnapshot.docs.forEach(function (doc) {
+      const document = {
+        id: doc.id,
+        data: doc.data(),
+      };
+      documents.push(document);
+    });
+
+    console.log(documents);
+
+    // display on the page.
+    const elements = [];
+    documents.forEach(function (doc) {
+      elements.push(`
+    <li id="${doc.id}">
+      <p>${
+        doc.data.name
+      } at ${convertTimestampToDatetime(doc.data.time.seconds)}</p>
+      <p>${doc.data.text}</p>
+    </li>
+  `);
+    });
+
+    $("#output").html(elements);
+  });
+</script>
