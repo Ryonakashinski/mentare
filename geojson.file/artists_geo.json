@@ -1,0 +1,233 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.6986, 139.7035]
+      },
+      "properties": {
+        "title": "SouthPenguin",
+        "address": "<b>South Penguin</b><br>Tokyo<br>Japan<br>",
+        "website": "https://southpenguinband.tumblr.com/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.634, 139.645]
+      },
+      "properties": {
+        "title": "cero",
+        "address": "<b>cero</b><br>Tokyo<br>Japan<br>",
+        "website": "https://twitter.com/cero_info"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [54.6878, 25.2819]
+      },
+      "properties": {
+        "title": "Suo Leila",
+        "address": "<b>Suo Leila</b><br>Vilnius<br>Lithuania<br>",
+        "website": "https://www.facebook.com/leilathedog/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.1706, 129.0756]
+      },
+      "properties": {
+        "title": "Bosudong Cooler",
+        "address": "<b>Bosudong Cooler</b><br>Busan<br>Korea<br>",
+        "website": "https://www.instagram.com/bosudongcooler/?hl=en"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.6878, 129.2819]
+      },
+      "properties": {
+        "title": "Hathaw9y",
+        "address": "<b>Hathaw9y</b><br>Busan<br>Korea<br>",
+        "website": "https://www.instagram.com/hathaw9y/?hl=en"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [37.456, 126.345]
+      },
+      "properties": {
+        "title": "landofpeace",
+        "address": "<b>land of peace</b><br>Seoul<br>Korea<br>",
+        "website": "https://www.instagram.com/landofpeaceband/?hl=en"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [37.345, 126.345]
+      },
+      "properties": {
+        "title": "adoy",
+        "address": "<b>adoy</b><br>Seoul<br>Korea<br>",
+        "website": "https://www.instagram.com/adoyband/?hl=en"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [31.6878, 121.2819]
+      },
+      "properties": {
+        "title": "Canned Dream",
+        "address": "<b>谷水车间</b><br>Shanghai<br>China<br>",
+        "website": "https://www.instagram.com/dreamcanband/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.1949, 117.2351]
+      },
+      "properties": {
+        "title": "ZOOGAZER",
+        "address": "<b>动物园钉子户</b><br>Xuzhou<br>China<br>",
+        "website": "https://www.instagram.com/dreamcanband/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [22.274, 114.1634]
+      },
+      "properties": {
+        "title": "Science Noodles",
+        "address": "<b>Science Noodles</b><br>Hong Kong<br>Hong Kong<br>",
+        "website": "https://www.instagram.com/sciencenoodles/?hl=en"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [24.8765, 121.2345]
+      },
+      "properties": {
+        "title": "The Fur",
+        "address": "<b>The fur</b><br>Taipei<br>Taiwan<br>",
+        "website": "https://www.instagram.com/love_1wakapa/?hl=ja"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [24.6878, 121.2819]
+      },
+      "properties": {
+        "title": "愛是唯一",
+        "address": "<b>愛是唯一</b><br>Taipei<br>Taiwan<br>",
+        "website": "https://www.instagram.com/love_1wakapa/?hl=ja"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [24.5678, 121.2345]
+      },
+      "properties": {
+        "title": "Deca Joins",
+        "address": "<b>Deca Joins</b><br>Taipei<br>Taiwan<br>",
+        "website": "https://www.instagram.com/decajoins/?hl=en"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [41.0341, -71.9442]
+      },
+      "properties": {
+        "title": "TAUK",
+        "address": "<b>TAUK</b><br>Montauk<br>New York<br>",
+        "website": "https://www.instagram.com/taukband/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [38.626, -90.33]
+      },
+      "properties": {
+        "title": "Physical Therapy",
+        "address": "<b>Physical Therapy</b><br>St.Louis<br>Missouri<br>",
+        "website": "https://twitter.com/fysicaltherapy?lang=en"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": []
+      },
+      "properties": {
+        "title": "",
+        "address": "<b></b><br>Taipei<br>Taiwan<br>",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": []
+      },
+      "properties": {
+        "title": "",
+        "address": "<b></b><br>Taipei<br>Taiwan<br>",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": []
+      },
+      "properties": {
+        "title": "",
+        "address": "<b></b><br>Taipei<br>Taiwan<br>",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": []
+      },
+      "properties": {
+        "title": "",
+        "address": "<b></b><br>Taipei<br>Taiwan<br>",
+        "website": ""
+      }
+    }
+  ]
+}

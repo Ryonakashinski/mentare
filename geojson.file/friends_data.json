@@ -1,0 +1,511 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-36.874, 174.789]
+      },
+      "properties": {
+        "title": "Nacchan",
+        "address": "<b>なっちゃん</b><br>Auckland<br>New Zealand<br>",
+        "nationalFlag": "../images/New_Zealand.svg.png",
+        "regionalFlag": "../images/Auckland.svg.png",
+        "website": "https://www.pinterest.jp/nakashinski/%E3%81%8A%E3%81%A3%E3%81%B1%E3%81%84is-the-world/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [31.017, 121.421]
+      },
+      "properties": {
+        "title": "Millie",
+        "address": "<b>Millie</b><br>上海市<br>",
+        "nationalFlag": "../images/China.svg.png",
+        "regionalFlag": "../images/",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [34.71, 111.006]
+      },
+      "properties": {
+        "title": "なっちゃん",
+        "address": "<b>なっちゃん</b><br>山西省<br>運城市",
+        "nationalFlag": "../images/China.svg.png",
+        "regionalFlag": "../images/",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [32.964, 120.059]
+      },
+      "properties": {
+        "title": "わんくん",
+        "address": "<b>わんくん</b><br>江蘇省<br>",
+        "nationalFlag": "../images/China.svg.png",
+        "regionalFlag": "../images/",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.7804774, 122.0676939]
+      },
+      "properties": {
+        "title": "Novii",
+        "address": "<b>Indonesia</b><br>Novii<br>Unaaha<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/",
+        "website": "https://www.instagram.com/_noviii.adit23/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-4.8311, 122.7162]
+      },
+      "properties": {
+        "title": "Ima",
+        "address": "<b>Indonesia</b><br>Raha<br>Ima<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/",
+        "website": "https://instagram.com/aecha_win7?igshid=NTc4MTIwNjQ2YQ=="
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [54.6838, 25.2839]
+      },
+      "properties": {
+        "title": "Evelina",
+        "address": "<b>Evelina</b><br>Vilnius<br>Lithuania<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/",
+        "website": "https://www.facebook.com/evelina.kanarskaite"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [54.6993, 25.2555]
+      },
+      "properties": {
+        "title": "Ruta",
+        "address": "<b>Lithuania</b><br>Vilnius<br>Ruta<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/",
+        "website": "https://www.facebook.com/ruta.andrulenaite"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.3734, 4.8928]
+      },
+      "properties": {
+        "title": "Nienke",
+        "address": "<b>Netherlands</b><br>Amsterdam<br>Nienke<br>",
+        "nationalFlag": "../images/Netherlands.png",
+        "regionalFlag": "../images/Amsterdam.svg.png",
+        "website": "https://www.facebook.com/nienke.francisca"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [45.7612, 4.813]
+      },
+      "properties": {
+        "title": "David",
+        "address": "<b>David</b><br>Auvergne-Rhône-Alpes<br>Lyon<br>",
+        "nationalFlag": "../images/France.png",
+        "regionalFlag": "../images/Auvergne-Rhône-Alpes.png",
+        "website": "https://www.facebook.com/kit.silencer.56"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [45.757, 4.8458]
+      },
+      "properties": {
+        "title": "Louna",
+        "address": "<b>Louna</b><br>Auvergne-Rhône-Alpes<br>Lyon<br>",
+        "nationalFlag": "../images/France.png",
+        "regionalFlag": "../images/Auvergne-Rhône-Alpes.png",
+        "website": "https://www.facebook.com/profile.php?id=100076229838905"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.0760459, -61.9121848]
+      },
+      "properties": {
+        "title": "Constance",
+        "address": "<b>Constance</b><br>France<br>Guadeloupe<br>Baie-Mahault<br>",
+        "nationalFlag": "../images/France.png",
+        "regionalFlag": "../images/Guadeloupe.svg.png",
+        "website": "https://www.instagram.com/kominu.pic/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [47.757, -3.5458]
+      },
+      "properties": {
+        "title": "Maelle",
+        "address": "<b>Maelle</b><br>Brittany<br>Quimper<br>",
+        "nationalFlag": "../images/France.png",
+        "regionalFlag": "../images/brittany.png",
+        "website": "https://www.instagram.com/ma__elle_/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-21.1273, 55.5242]
+      },
+      "properties": {
+        "title": "Nerci",
+        "address": "<b>Nerci</b><br>Reunion<br>France<br>",
+        "nationalFlag": "../images/France.png",
+        "regionalFlag": "../images/Reunion.png",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [43.731, 7.4209]
+      },
+      "properties": {
+        "title": "Slav",
+        "address": "<b>Slav</b><br>Monaco<br><br>",
+        "nationalFlag": "../images/Monaco.svg.png",
+        "regionalFlag": "../images/",
+        "website": "https://www.facebook.com/Slave.Gjorgjievski"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [42.5642, 12.6405]
+      },
+      "properties": {
+        "title": "Chiara",
+        "address": "<b>Chiara</b><br>Umbria<br>Terni<br>",
+        "nationalFlag": "../images/italy.svg.png",
+        "regionalFlag": "../images/Umbria.svg.png",
+        "website": "https://www.facebook.com/chiara.felicioni"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [38.7456, -9.1914]
+      },
+      "properties": {
+        "title": "Mafalda",
+        "address": "<b>Mafalda</b><br>Lisboa<br>Portugal<br>",
+        "nationalFlag": "../images/Portugal.svg.png",
+        "regionalFlag": "../images/Lisboa.png",
+        "website": "https://www.instagram.com/mafasribeiro/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [52.4424899, 31.0070947]
+      },
+      "properties": {
+        "title": "Mariya's house",
+        "address": "<b>Mariya's house</b><br>Belarus<br>Homieĺ<br>",
+        "nationalFlag": "../images/Belarus.svg.png",
+        "regionalFlag": "../images/",
+        "website": "https://www.instagram.com/_merilin._/"
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7303, 139.7442]
+      },
+      "properties": {
+        "title": "Sonmin",
+        "address": "<b>Sonmin</b><br>tokyo<br>Japan<br>",
+        "nationalFlag": "../images/Korea.png",
+        "regionalFlag": "../images/",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [32.7769, 131.8378]
+      },
+      "properties": {
+        "title": "anna_aleksandra",
+        "address": "<b>anna_aleksandra</b><br>Oita<br>Beppu<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/Oita.png",
+        "website": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.7748, 139.6805]
+      },
+      "properties": {
+        "title": "はなみ",
+        "address": "<b>Hanami</b><br>東京<br>板橋区<br>",
+        "nationalFlag": "../images/Japan.png",
+        "regionalFlag": "../images/Tokyo.png",
+        "website": "https://www.instagram.com/hnmtrkhztm/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.2333, 129.6805]
+      },
+      "properties": {
+        "title": "Takumi",
+        "address": "<b>Takumi</b><br>Nagasaki<br>Sasebo<br>",
+        "nationalFlag": "../images/Japan.png",
+        "regionalFlag": "../images/Nagasaki.png",
+        "website": "https://jml-gr.jp/nagasaki"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [35.6819, 139.6608]
+      },
+      "properties": {
+        "title": "Dohisan",
+        "address": "<b>Dohisan</b><br>tokyo<br>Japan<br>",
+        "nationalFlag": "../images/Japan.png",
+        "regionalFlag": "../images/",
+        "website": ""
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [37.2594, 127.0274]
+      },
+      "properties": {
+        "title": "이다솜",
+        "address": "<b>이다솜</b><br>Suwon<br>Korea<br>",
+        "nationalFlag": "../images/Korea.png",
+        "regionalFlag": "../images/Suwon.svg.png",
+        "website": "https://www.facebook.com/grace120807"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.4589, 126.517]
+      },
+      "properties": {
+        "title": "へうぉん",
+        "address": "<b>へうぉん</b><br>Jeju<br>Korea<br>",
+        "nationalFlag": "../images/Korea.png",
+        "regionalFlag": "../images/jeju.png",
+        "website": "https://www.instagram.com/h._won2/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.4267, 126.5062]
+      },
+      "properties": {
+        "title": "じゅよん",
+        "address": "<b>じゅよん</b><br>Jeju,向日葵<br>Korea<br>",
+        "nationalFlag": "../images/Korea.png",
+        "regionalFlag": "../images/jeju.png",
+        "website": "https://www.facebook.com/grace120807"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [25.0365, 121.561]
+      },
+      "properties": {
+        "title": "Tinchu",
+        "address": "<b>Taiwan</b><br>Taipei<br>Tinchu<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/",
+        "website": "https://www.facebook.com/chen.tingchu"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [19.0441, -98.198]
+      },
+      "properties": {
+        "title": "Pablo",
+        "address": "<b>Mexico</b><br>Puebla<br>Pablo<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/",
+        "website": "https://www.facebook.com/pablo.trejo.7330"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-34.633, -58.4516]
+      },
+      "properties": {
+        "title": "Rocio",
+        "address": "<b>Rocio</b><br>Argentina<br>Buenos-aires<br>",
+        "nationalFlag": "../images/",
+        "regionalFlag": "../images/",
+        "website": "https://www.instagram.com/direct/t/105026547558420/"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [45.4208, -75.6899]
+      },
+      "properties": {
+        "title": "Hiromi",
+        "address": "<b>Canada</b><br>Ottawa<br>Hiromi<br>",
+        "nationalFlag": "../images/canada.png",
+        "regionalFlag": "../images/",
+        "website": "https://www.facebook.com/masaki.hiromi.92"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [32.7166, -117.1626]
+      },
+      "properties": {
+        "title": "ThiLe",
+        "address": "<b>ThiLe</b><br>California<br>SanDiego<br>",
+        "nationalFlag": "../images/United_States.svg.png",
+        "regionalFlag": "../images/california.png",
+        "website": "https://www.facebook.com/thinh.le.37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [40.7124, -74.0061]
+      },
+      "properties": {
+        "title": "Meg",
+        "address": "<b>US</b><br>NewYork<br>Meg<br>",
+        "nationalFlag": "../images/United_States.svg.png",
+        "regionalFlag": "../images/New_York.svg.png",
+        "website": "https://www.facebook.com/megtakada"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0.04, -78.586]
+      },
+      "properties": {
+        "title": "Martina",
+        "address": "<b>Martina</b><br>Ecuador<br>Quito<br>",
+        "nationalFlag": "../images/Ecuador.svg.png",
+        "regionalFlag": "../images/Quito.png",
+        "website": "https://www.facebook.com/martina.estevez.7"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [57.707, 11.9674]
+      },
+      "properties": {
+        "title": "Sara",
+        "address": "<b>Sweden</b><br>Goteborg<br>Sara<br>",
+        "nationalFlag": "../images/Sweden.svg.png",
+        "regionalFlag": "../images/Iran.svg.png",
+        "website": "https://www.facebook.com/sara.hoghooghi"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-45.874, 170.486]
+      },
+      "properties": {
+        "title": "Hayley",
+        "address": "<b>New Zealand</b><br>Otago<br>Hayley<br>",
+        "nationalFlag": "../images/New_Zealand.svg.png",
+        "regionalFlag": "../images/Otago.svg.png",
+        "website": "https://www.facebook.com/profile.php?id=100012248351804"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-36.874, 174.789]
+      },
+      "properties": {
+        "title": "Nacchan",
+        "address": "<b>なっちゃん</b><br>Auckland<br>New Zealand<br>",
+        "nationalFlag": "../images/New_Zealand.svg.png",
+        "regionalFlag": "../images/Auckland.svg.png",
+        "website": "https://www.pinterest.jp/nakashinski/%E3%81%8A%E3%81%A3%E3%81%B1%E3%81%84is-the-world/"
+      }
+    }
+  ]
+}

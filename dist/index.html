@@ -193,326 +193,110 @@
           .setContent("This is a popup!")
           .openOn(map);
 
-        // Asian countries layer
-        fetch("../geojson.file/custom.geo.json") //the data is fetched
-          .then((response) => response.json()) // it is parsed as JSON
-          .then((data) => {
-            //passed to the L.geoJson method, which creates a GeoJSON layer and adds it to the map
-            L.geoJson(data).addTo(map);
+        const dataFriends = {};
+
+        fetch("../geojson.file/friends_data.json")
+          .then((response) => response.json())
+          .then((geojsonData) => {
+            geojsonData.features.forEach((feature, index) => {
+              const id = `friend_${index}`;
+              const coords = feature.geometry.coordinates;
+              const title = feature.properties.title;
+              const address = feature.properties.address;
+              const nationalFlag = feature.properties.nationalFlag;
+              const regionalFlag = feature.properties.regionalFlag;
+              const website = feature.properties.website;
+
+              // Construct the friend object
+              const friend = {
+                coords: coords,
+                title: title,
+                address: address,
+                nationalFlag: nationalFlag,
+                regionalFlag: regionalFlag,
+                website: website,
+              };
+              // Add the friend object to dataFriends
+              dataFriends[id] = friend;
+            });
+          })
+          .then(() => {
+            for (let key in dataFriends) {
+              var friends = dataFriends[key];
+              L.marker(friends.coords, {
+                titile: friends.title,
+                icon: customFriends,
+              })
+                .bindPopup(
+                  `
+                            <span class = 'popup'>
+                              ${friends.address}
+                              <img src="${friends.nationalFlag}" alt="national flag" width="100"><br>
+                              <img src="${friends.regionalFlag}" alt="regional flag" width="100"><br>
+                              <a href = '${friends.website}' target = '_blank'> Message </a><br>
+                              </span>
+                              `
+                )
+                .addTo(map);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching or processing data:", error);
           });
-        // north american layer
-        fetch("../geojson.file/north_america.geojson") //the data is fetched
-          .then((response) => response.json()) // it is parsed as JSON
-          .then((data) => {
-            //passed to the L.geoJson method , which creates a GeoJSON layer and adds it to the map
-            L.geoJson(data).addTo(map);
-          });
-        //
-        //
-        //
-        // 1. make an icon that users can put their icons.
-        // step.1 Define the icon options
-        const dataFriends = {
-          Millie: {
-            coords: [31.1766, 121.4372],
-            titile: "Friends",
-            address: `
-            <b>China</b><br>
-            Shanghai<br>
-            Millie,`,
-          },
-          Novii: {
-            coords: [-3.7804774, 122.0676939],
-            title: "Novii",
-            address: `
-                    <b>Indonesia</b><br>
-                    Novii<br>
-                    Unaaha<br>`,
-            website: "https://www.instagram.com/_noviii.adit23/",
-          },
-          Ima: {
-            coords: [-4.8311, 122.7162],
-            title: "Ima",
-            address: `
-                    <b>Indonesia</b><br>
-                    Raha<br>
-                    Ima<br>`,
-            website: "https://instagram.com/aecha_win7?igshid=NTc4MTIwNjQ2YQ==",
-          },
-          David: {
-            coords: [45.7612, 4.813],
-            title: "David",
-            address: `
-                    <b>France</b><br>
-                    Lyon<br>
-                    David<br>`,
-            website: "https://www.facebook.com/kit.silencer.56",
-          },
-          Martina: {
-            coords: [0.04, -78.586],
-            title: "Martina",
-            address: `
-                    <b>Equador</b><br>
-                    Quito<br>
-                    Martina<br>`,
-            website: "https://www.facebook.com/martina.estevez.7",
-          },
-          Slav: {
-            coords: [43.731, 7.4209],
-            title: "Slav",
-            address: `
-                    <b>Monaco</b><br>
-                    Monaco<br>
-                    Slav<br>`,
-            website: "https://www.facebook.com/Slave.Gjorgjievski",
-          },
-          Chiara: {
-            coords: [42.5642, 12.6405],
-            title: "Chiara",
-            address: `
-                    <b>Italy</b><br>
-                    Terni, Umbria<br>
-                    Chiara<br>`,
-            website: "https://www.facebook.com/chiara.felicioni",
-          },
-          이다솜: {
-            coords: [37.2594, 127.0274],
-            title: "이다솜",
-            address: `
-                    <b>한국</b><br>
-                    Suwon<br>
-                    이다솜<br>`,
-            website: "https://www.facebook.com/grace120807",
-          },
-          Pablo: {
-            coords: [19.0441, -98.198],
-            title: "Pablo",
-            address: `
-                    <b>Mexico</b><br>
-                    Puebla<br>
-                    Pablo<br>`,
-            website: "https://www.facebook.com/pablo.trejo.7330",
-          },
-          Hiromi: {
-            coords: [45.4208, -75.6899],
-            title: "Hiromi",
-            address: `
-                    <b>Canada</b><br>
-                    Ottawa<br>
-                    Hiromi<br>`,
-            website: "https://www.facebook.com/masaki.hiromi.92",
-          },
-          ThiLe: {
-            coords: [32.7166, -117.1626],
-            title: "ThiLe",
-            address: `
-                    <b>US</b><br>
-                    SanDiego<br>
-                    ThiLe<br>`,
-            website: "https://www.facebook.com/thinh.le.37",
-          },
-          Nienke: {
-            coords: [52.3734, 4.8928],
-            title: "Nienke",
-            address: `
-                    <b>Netherlands</b><br>
-                    Amsterdam<br>
-                    Nienke<br>`,
-            website: "https://www.facebook.com/nienke.francisca",
-          },
-          Evelina: {
-            coords: [54.6838, 25.2839],
-            title: "Evelina",
-            address: `
-                    <b>Lithuania</b><br>
-                    Vilnius<br>
-                    Evelina<br>`,
-            website: "https://www.facebook.com/evelina.kanarskaite",
-          },
-          Meg: {
-            coords: [40.7124, -74.0061],
-            title: "Meg",
-            address: `
-                    <b>US</b><br>
-                    NewYork<br>
-                    Meg<br>`,
-            website: "https://www.facebook.com/megtakada",
-          },
-          Ruta: {
-            coords: [54.6993, 25.2555],
-            title: "Ruta",
-            address: `
-                    <b>Lithuania</b><br>
-                    Vilnius<br>
-                    Ruta<br>`,
-            website: "https://www.facebook.com/ruta.andrulenaite",
-          },
-          Tinchu: {
-            coords: [25.0365, 121.561],
-            title: "Tinchu",
-            address: `
-                    <b>Taiwan</b><br>
-                    Taipei<br>
-                    Tinchu<br>`,
-            website: "https://www.facebook.com/chen.tingchu",
-          },
-          Sarah: {
-            coords: [57.707, 11.9674],
-            title: "Sara",
-            address: `
-                    <b>Sweden</b><br>
-                    Goteborg<br>
-                    Sara<br>`,
-            website: "https://www.facebook.com/sara.hoghooghi",
-          },
-          Louna: {
-            coords: [45.757, 4.8458],
-            title: "Louna",
-            address: `
-                    <b>France</b><br>
-                    Lyon<br>
-                    Louna<br>`,
-            website: "https://www.facebook.com/profile.php?id=100076229838905",
-          },
-          Hayley: {
-            coords: [-45.874, 170.486],
-            title: "Hayley",
-            address: `
-                    <b>New Zealand</b><br>
-                    Otago<br>
-                    Hayley<br>`,
-            website: "https://www.facebook.com/profile.php?id=100012248351804",
-          },
-        };
+
         const customFriends = L.icon({
           iconUrl: "../images/friend.png",
           iconSize: [30, 30], // The size of the icon
           iconAnchor: [15, 15], // The anchor point of the icon, relative to its size
         });
 
-        for (let key in dataFriends) {
-          var friends = dataFriends[key];
-          L.marker(friends.coords, {
-            titile: friends.title,
-            icon: customFriends,
-          })
-            .bindPopup(
-              `
-            <span class = 'popup'>
-              ${friends.address}
-              <a href = '${friends.website}' target = '_blank'> Message </a><br>
-              </span>
-              `
-            )
-            .addTo(map);
-        }
-
         // Location of my favorite artists.
-        const dataArtists = {
-          spg: {
-            coords: [35.6986, 139.7035],
-            title: "SouthPenguin",
-            address: `
-                    <b>South Penguin</b><br>
-                    Tokyo<br>
-                    Japan<br>`,
-            website: "https://southpenguinband.tumblr.com/",
-          },
-          suoLeila: {
-            coords: [54.6878, 25.2819],
-            title: "Suo Leila",
-            address: `
-                    <b>Suo Leila</b><br>
-                    Vilnius<br>
-                    Lithuania<br>`,
-            website: "https://www.facebook.com/leilathedog/",
-          },
-          bsdcl: {
-            coords: [35.1706, 129.0756],
-            title: "Bosudong Cooler",
-            address: `
-                    <b>Bosudong Cooler</b><br>
-                    Busan<br>
-                   Korea<br>`,
-            website: "https://www.instagram.com/bosudongcooler/?hl=en",
-          },
-          hathaw9y: {
-            coords: [35.6878, 129.2819],
-            title: "Hathaw9y",
-            address: `
-                    <b>Hathaw9y</b><br>
-                    Busan<br>
-                    Korea<br>`,
-            website: "https://www.instagram.com/hathaw9y/?hl=en",
-          },
-          cero: {
-            coords: [35.634, 139.645],
-            title: "cero",
-            address: `
-                    <b>cero</b><br>
-                    Tokyo<br>
-                    Japan<br>`,
-            website: "https://twitter.com/cero_info",
-          },
-          landofpeace: {
-            coords: [37.456, 126.345],
-            title: "landofpeace",
-            address: `
-                    <b>land of peace</b><br>
-                    Seoul<br>
-                    Korea<br>`,
-            website: "https://www.instagram.com/landofpeaceband/?hl=en",
-          },
-          love_1: {
-            coords: [24.6878, 121.2819],
-            title: "愛是唯一",
-            address: `
-                    <b>愛是唯一</b><br>
-                    Taipei<br>
-                    Taiwan<br>`,
-            website: "https://www.instagram.com/love_1wakapa/?hl=ja",
-          },
-          CannedDream: {
-            coords: [31.6878, 121.2819],
-            title: "Canned Dream",
-            address: `
-                    <b>谷水车间</b><br>
-                    Shanghai<br>
-                    China<br>`,
-            website: "https://www.instagram.com/dreamcanband/",
-          },
-          theFur: {
-            coords: [24.8765, 121.2345],
-            title: "The Fur",
-            address: `
-                    <b>The fur</b><br>
-                    Taipei<br>
-                    Taiwan<br>`,
-            website: "https://www.instagram.com/love_1wakapa/?hl=ja",
-          },
-        };
+        const dataArtists = {};
+
+        fetch("../geojson.file/artists_geo.json")
+          .then((response) => response.json())
+          .then((geojsonData) => {
+            geojsonData.features.forEach((feature, index) => {
+              const id = `artists_${index}`;
+              const coords = feature.geometry.coordinates;
+              const title = feature.properties.title;
+              const address = feature.properties.address;
+              const website = feature.properties.website;
+
+              const artists = {
+                coords: coords,
+                title: title,
+                address: address,
+                website: website,
+              };
+              // Add the friend object to dataFriends
+              dataArtists[id] = artists;
+            });
+          })
+          .then(() => {
+            for (let key in dataArtists) {
+              var artists = dataArtists[key];
+              L.marker(artists.coords, {
+                titile: artists.title,
+                icon: customArtists,
+              })
+                .bindPopup(
+                  `
+                            <span class = 'popup'>
+                              ${artists.address}
+                              <a href = '${artists.website}' target = '_blank'> Link </a><br>
+                              </span>
+                              `
+                )
+                .addTo(map);
+            }
+          });
+
         const customArtists = L.icon({
           iconUrl: "../images/crotchet.png",
           iconSize: [30, 30], // The size of the icon
           iconAnchor: [15, 15], // The anchor point of the icon, relative to its size
         });
-
-        for (let key in dataArtists) {
-          var artists = dataArtists[key];
-          L.marker(artists.coords, {
-            titile: artists.title,
-            icon: customArtists,
-          })
-            .bindPopup(
-              `
-            <span class = 'popup'>
-              ${artists.address}
-              <a href = '${artists.website}' target = '_blank'> Link </a><br>
-              </span>
-              `
-            )
-            .addTo(map);
-        }
 
         // the location of favorite hostel or friends house.
         const dataH = {
@@ -520,32 +304,33 @@
             coords: [30.6463, 104.045],
             title: "Hostel",
             address: `
-                    <b>China</b><br>
-                    Chengdu<br>
-                    Chengdu Dreams Travel International Youth Hostel<br>`,
+                                    <b>China</b><br>
+                                    Chengdu<br>
+                                    Chengdu Dreams Travel International Youth Hostel<br>`,
             website:
               "https://www.booking.com/hotel/cn/chengdu-dreams-travel.html?aid=304142&label=gen173bo-1FCAEoggI46AdIM1gDaHWIAQGYATG4ARfIAQzYAQHoAQH4AQOIAgGYAiGoAgO4AoeD8qIGwAIB0gIkM2E5YjdjMWItOTI4Zi00ODlmLTg4ZTctNTdmNDdkYTg5OTlk2AIF4AIB&sid=c30630a4d48a00c1b51c52c30486e877&all_sr_blocks=37886416_369674138_1_42_0;checkin=2023-05-12;checkout=2023-05-13;dest_id=378864;dest_type=hotel;dist=0;group_adults=1;group_children=0;hapos=1;highlighted_blocks=37886416_369674138_1_42_0;hpos=1;matching_block_id=37886416_369674138_1_42_0;no_rooms=1;req_adults=1;req_children=0;room1=A;sb_price_type=total;sr_order=popularity;sr_pri_blocks=37886416_369674138_1_42_0__7448;srepoch=1683784307;srpvid=11f7293892ce018f;type=total;ucfs=1&#hotelTmpl",
           },
         };
-        const customHostel = L.icon({
+        const customHome = L.icon({
           iconUrl: "../images/hostel.png",
           iconSize: [20, 20],
         });
 
         for (let key in dataH) {
-          const hostel = dataH[key];
+          const home = dataH[key];
 
-          L.marker(hostel.coords, {
-            title: hostel.title,
-            icon: customHostel,
+          L.marker(home.coords, {
+            title: home.title,
+            icon: customHome,
           })
             .bindPopup(
               `
-                <span class = "popup">
-                   ${hostel.address}
-                    <a href = "${hostel.website}" target = "_blank">Book</a><br>
-                </span>
-                `
+                                <span class = "popup">
+                                   ${home.address}
+                                    <a href = "${home.website}" target = "_blank">Book</a><br>
+                                </span>
+
+                                `
             )
             .addTo(map);
         }
@@ -562,6 +347,7 @@
             attribution: "©OpenStreetMap, ©CartoDB",
           }
         ).addTo(map);
+
         // CartoDB's Positron map tiles for the labels
         var positronLabels = L.tileLayer(
           "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png",
