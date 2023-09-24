@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HiHiRi PiPiPi</title>
+    <title>KajaCasa</title>
 
     <link
       rel="stylesheet"
@@ -47,24 +47,7 @@
   <!-- the interactive web map -->
   <body>
     <h1>KajaCasa</h1>
-    <!-- sign up modal -->
-    <div id="modal-signup" class="modal">
-      <div class="modal-constent">
-        <h4>Sign up</h4>
-        <br />
-        <form id="signup-form">
-          <div class="input-field">
-            <input type="emial" id=" signup-email" required />
-            <label for="signup-email">Email address</label>
-          </div>
-          <div class="input-field">
-            <input type="password" id="signup-password" required />
-            <label for="signup-password">Choose password</label>
-          </div>
-          <button class="btn yellow darken-2 z-depth-0">Sign up</button>
-        </form>
-      </div>
-    </div>
+
     <!-- text message -->
     <div id="container">
       <div class="bg-green-700" id="map"></div>
@@ -131,50 +114,50 @@
       //
       //
       // // user's icon
-      // function addUserMarker(map, user) {
-      //   var userMarker = L.marker(user.coords, {
-      //     title: user.name,
-      //     icon: customUserIcon,
-      //   }).addTo(map);
+      function addUserMarker(map, user) {
+        var userMarker = L.marker(user.coords, {
+          title: user.name,
+          icon: customUserIcon,
+        }).addTo(map);
 
-      //   // create a popup for the user marker
-      //   var userPopup = L.popup().setContent(`<p>${user.name}</p>`);
-      //   userMarker.bindPopup(userPopup);
+        // create a popup for the user marker
+        var userPopup = L.popup().setContent(`<p>${user.name}</p>`);
+        userMarker.bindPopup(userPopup);
 
-      //   // customize for the car icon.
-      // }
+        // customize for the car icon.
+      }
 
-      // // Listen for changes in the user data in Firestore
-      // onSnapshot(collection(db, "users")),
-      //   (querySnapshot) => {
-      //     // clear existing user markers from the map
-      //     userMarkersLayer.clearLayers();
+      // Listen for changes in the user data in Firestore
+      onSnapshot(collection(db, "users")),
+        (querySnapshot) => {
+          // clear existing user markers from the map
+          userMarkersLayer.clearLayers();
 
-      //     // loop through the user data and add markers to the map
-      //     querySnapshot.forEach((doc) => {
-      //       var userData = doc.data();
-      //       addUserMarker(map, userData);
-      //     });
-      //   };
+          // loop through the user data and add markers to the map
+          querySnapshot.forEach((doc) => {
+            var userData = doc.data();
+            addUserMarker(map, userData);
+          });
+        };
 
-      // // Function to store user data in Firestore
-      // function storeUserData(name, latitude, longitude) {
-      //   const userData = {
-      //     name: name,
-      //     coords: [latitude, longitude],
-      //   };
+      // Function to store user data in Firestore
+      function storeUserData(name, latitude, longitude) {
+        const userData = {
+          name: name,
+          coords: [latitude, longitude],
+        };
 
-      //   // add the user data to the forestore database
-      //   addDoc(collection(db, "users"), userData)
-      //     .then(() => {
-      //       console.log("user data added successfully");
-      //     })
-      //     .catch((error) => {
-      //       console.error("error adding user data:", error);
-      //     });
-      // }
-      // // Example usage to store user data
-      // storeUserData("User1", 34.12345, -118.56789);
+        // add the user data to the forestore database
+        addDoc(collection(db, "users"), userData)
+          .then(() => {
+            console.log("user data added successfully");
+          })
+          .catch((error) => {
+            console.error("error adding user data:", error);
+          });
+      }
+      // Example usage to store user data
+      storeUserData("User1", 30.12345, -118.56789);
 
       // message space
       // send the data to firebase.
@@ -265,112 +248,6 @@
         } else {
           console.log("Geolocation is not available in this browser.");
         }
-
-        // friend's location
-        const dataFriends = {};
-
-        fetch("../geojson.file/friends_data.json")
-          .then((response) => response.json())
-          .then((geojsonData) => {
-            geojsonData.features.forEach((feature, index) => {
-              const id = `friend_${index}`;
-              const coords = feature.geometry.coordinates;
-              const title = feature.properties.title;
-              const address = feature.properties.address;
-              const nationalFlag = feature.properties.nationalFlag;
-              const regionalFlag = feature.properties.regionalFlag;
-              const website = feature.properties.website;
-
-              // Construct the friend object
-              const friend = {
-                coords: coords,
-                title: title,
-                address: address,
-                nationalFlag: nationalFlag,
-                regionalFlag: regionalFlag,
-                website: website,
-              };
-              // Add the friend object to dataFriends
-              dataFriends[id] = friend;
-            });
-          })
-          .then(() => {
-            for (let key in dataFriends) {
-              var friends = dataFriends[key];
-              L.marker(friends.coords, {
-                titile: friends.title,
-                icon: customFriends,
-              })
-                .bindPopup(
-                  `
-                            <span class = 'popup'>
-                              ${friends.address}
-                              <img src="${friends.nationalFlag}" alt="national flag" width="100"><br>
-                              <img src="${friends.regionalFlag}" alt="regional flag" width="100"><br>
-                              <a href = '${friends.website}' target = '_blank'> Message </a><br>
-                              </span>
-                              `
-                )
-                .addTo(map);
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching or processing data:", error);
-          });
-
-        const customFriends = L.icon({
-          iconUrl: "../images/friend.png",
-          iconSize: [30, 30], // The size of the icon
-          iconAnchor: [15, 15], // The anchor point of the icon, relative to its size
-        });
-
-        // Location of my favorite artists.
-        const dataArtists = {};
-
-        fetch("../geojson.file/artists_geo.json")
-          .then((response) => response.json())
-          .then((geojsonData) => {
-            geojsonData.features.forEach((feature, index) => {
-              const id = `artists_${index}`;
-              const coords = feature.geometry.coordinates;
-              const title = feature.properties.title;
-              const address = feature.properties.address;
-              const website = feature.properties.website;
-
-              const artists = {
-                coords: coords,
-                title: title,
-                address: address,
-                website: website,
-              };
-              // Add the friend object to dataFriends
-              dataArtists[id] = artists;
-            });
-          })
-          .then(() => {
-            for (let key in dataArtists) {
-              var artists = dataArtists[key];
-              L.marker(artists.coords, {
-                titile: artists.title,
-                icon: customArtists,
-              })
-                .bindPopup(
-                  `
-                            <span class = 'popup'>
-                              ${artists.address}
-                              <a href = '${artists.website}' target = '_blank'> Link </a><br>
-                              </span>
-                              `
-                )
-                .addTo(map);
-            }
-          });
-
-        const customArtists = L.icon({
-          iconUrl: "../images/crotchet.png",
-          iconSize: [30, 30], // The size of the icon
-          iconAnchor: [15, 15], // The anchor point of the icon, relative to its size
-        });
 
         // a blank map
         map.createPane("labels");
