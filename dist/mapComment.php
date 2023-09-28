@@ -34,32 +34,15 @@
   <!-- the interactive web map -->
   <body>
     <h1 class="title">Awa Awa Map</h1>
-
     <div id="container">
-      <div id="map" style="width: 100%; height: 500px;"></div>
-
-      <!-- the text message on user's location -->
-      <!-- <div
-        id="messageOutput"
-        class="map-block"
-        style="
-          position: absolute;
-          top: 20px;
-          left: 20px;
-          background-color: rgba(255, 255, 255, 0.8);
-          padding: 10px;
-          border-radius: 5px;
-        "></div> -->
-
-      <!-- Message list container -->
-      <ul id="messageList" class="message-list map-block"></ul>
+      <div id="map"></div>
 
       <div id="content-container">
-        <h1>
+        <h1>Welcome to Awa Awa Map</h1>
+        <p>
           Create your own bubble. Be bubble. it's ok just tiny bubble. if you
           make a lots of tiny bubble, it will become water.
-        </h1>
-
+        </p>
         <div class="bubble-container">
           <!-- Generate bubbles using JavaScript -->
           <script src="home.js"></script>
@@ -74,7 +57,7 @@
             <input type="text" id="name" />
           </div>
           <div>
-            <label for="text">Message:</label>
+            <label for="text">Place:</label>
             <input type="text" id="text" />
           </div>
           <div>
@@ -83,6 +66,8 @@
         </div>
       </div>
       <ul id="output"></ul>
+
+      <ul id="commentsList"></ul>
     </div>
 
     <script>
@@ -124,21 +109,25 @@
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
-
       const db = getFirestore(app);
 
       // message space
       // Function to add a popup to a specific location marker
       function addPopupToLocation(lat, lng, message) {
-        const popupContent = `<p>${message}</p>`; // Customize the message content
+        const popupContent = `
+        <b>${name}</b>: ${text}<br>
+        <textarea id="comment" rows="4" cols="30" placeholder="Add your comment here"></textarea>
+    <button onclick="saveComment(${lat}, ${lng})">Save</button>
+    `; // Customize the message content
+
         const marker = L.marker([lat, lng]).addTo(map);
-        marker.bindPopup(popupContent).openPopup(); // Display message as a popup
+        marker.bindPopup(popupContent).openPopup();
       }
 
       // Function to display messages from the "output" list on the map
       function displayOutputOnMap() {
-        const messageList = document.getElementById("messageList");
-        const messages = messageList.getElementsByTagName("message-list");
+        const outputList = document.getElementById("output");
+        const messages = outputList.getElementsByTagName("li");
 
         for (const message of messages) {
           const messageText = message.textContent;
@@ -151,63 +140,41 @@
           }
         }
       }
-
       // Call the function to display "output" messages on the map
       displayOutputOnMap();
 
-      // Function to display messages from Firebase Firestore on the map
-      function displayMessagesFromFirestore() {
-        const messageList = document.getElementById("messageList");
+      // Function to display comments on the location
+      function displayCommentsOnMap() {
+        const commentsCollection = collection(db, "comments"); // Reference to the "comments" collection
+        const querySnapshot = query(commentsCollection, orderBy("time", "asc")); // Create a query to order comments by time (you can modify this as needed)
 
-        // Reference to the "markers" collection
-        const markersCollection = collection(db, "markers");
-
-        // Create a query to order messages by time
-        const querySnapshot = query(
-          markersCollection,
-          orderBy("time", "asc") // You can change "asc" to "desc" for reverse order
-        );
-
-        // Listen for changes to the query
+        // Listen for changes in the comments collection
         onSnapshot(querySnapshot, (snapshot) => {
-          snapshot.docChanges().forEach((change) => {
-            if (change.type === "added") {
-              // When a new message is added, create a list item for it
-              const messageData = change.doc.data();
-              const messageItem = document.createElement("li");
-              messageItem.innerHTML = `<b>${messageData.name}</b>: ${messageData.text}`;
-              messageList.appendChild(messageItem);
-            }
+          snapshot.forEach((doc) => {
+            const commentData = doc.data();
+            const lat = commentData.latitude;
+            const lng = commentData.longitude;
+            const message = `${commentData.name}: ${commentData.text}`;
+
+            // Add a marker with a popup for the comment
+            addPopupToLocation(lat, lng, message);
           });
         });
       }
 
-      // Call the function to display messages from Firestore on page load
-      displayMessagesFromFirestore();
-
-      // send the data to firebase.
-      $("#send").on("click", function (event) {
+      // Attach a click event listener to the "Save" button
+      $("#save").on("click", function (event) {
         event.preventDefault(); // Prevent default form submission behavior
+
         navigator.geolocation.getCurrentPosition(function (position) {
-          //it gets the current location
+          // Get user input
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
           const name = $("#name").val();
           const text = $("#text").val();
 
-          // Add a marker with a popup for the new message
-          const marker = L.marker([lat, lng]).addTo(map);
-          const popupContent = `<b>${name}</b>: ${text}<br>`;
-          marker.bindPopup(popupContent);
-
-          // Add the marker to the map
-          marker.addTo(map);
-
-          // Open the popup immediately when the marker is added
-          marker.openPopup();
-
-          // Add the message to Firebase
-          const postData = {
+          const commentData = {
+            // Add the comment to Firebase
             name: name,
             text: text,
             time: serverTimestamp(),
@@ -215,11 +182,87 @@
             longitude: lng,
           };
 
-          // Reference to the "markers" collection
-          const markersCollection = collection(db, "markers");
+          const commentsCollection = collection(db, "comments"); // Reference to the "comments" collection
 
-          // Add the document to Firestore
-          addDoc(markersCollection, postData)
+          // Add the comment document to Firestore
+          addDoc(commentsCollection, commentData)
+            .then(() => {
+              console.log("Comment added successfully");
+              $("#text").val("");
+
+              // After saving the comment, update the UI
+              displayCommentsOnMap();
+            })
+            .catch((error) => {
+              console.error("Error adding comment:", error);
+            });
+        });
+      });
+      // Initial display of comments
+      displayCommentsOnMap();
+
+      // send the data to firebase.
+      $("#send").on("click", function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+          //it gets the current location
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const name = $("#name").val();
+          const text = $("#text").val();
+          // Add a marker with a popup for the new message
+          const marker = L.marker([lat, lng]).addTo(map);
+          const popupContent = `
+          <b>${name}</b>: ${text}<br>
+          <textarea id="comment" placeholder="Enter your comment"></textarea><br>
+      <button id="saveComment">Save</button>
+      `;
+          marker.bindPopup(popupContent).openPopup();
+
+          // Handle the "Save" button click
+          $("#saveComment").on("click", function () {
+            saveComment(lat, lng);
+          });
+
+          function saveComment(lat, lng) {
+            const comment = $("#comment").val();
+
+            // Check if a comment is provided
+            if (comment.trim() !== "") {
+              const commentsCollection = collection(db, "comments"); // Create a reference to the "comments" collection in Firestore
+
+              const commentData = {
+                // Create a data object to represent the comment
+                text: comment,
+                latitude: lat,
+                longitude: lng,
+                time: serverTimestamp(),
+              };
+
+              addDoc(commentsCollection, commentData) // Add the comment data to Firestore
+                .then(() => {
+                  console.log("Comment added successfully");
+                  $("#comment").val(""); // Clear the comment input field
+                })
+                .catch((error) => {
+                  console.error("Error adding comment:", error);
+                });
+            }
+          }
+
+          const postData = {
+            // Add the message to Firebase
+            name: name,
+            text: text,
+            time: serverTimestamp(),
+            latitude: lat,
+            longitude: lng,
+          };
+
+          const markersCollection = collection(db, "markers"); // Reference to the "markers" collection
+
+          addDoc(markersCollection, postData) // Add the document to Firestore
             .then(() => {
               console.log("Document added successfully");
               $("#text").val("");
@@ -235,14 +278,14 @@
       document.addEventListener("DOMContentLoaded", function () {
         if ("geolocation" in navigator) {
           // map initialization. L is for leaflip
-          var map = L.map("map").setView([0, 0], 2);
+          map = L.map("map").setView([0, 0], 2);
 
           // Create a marker and circle with default position (will be updated)
           var marker = L.marker([0, 0]).addTo(map);
           var circle = L.circle([0, 0], { radius: 1000 }).addTo(map);
 
           // Create a popup
-          var bubblePopup = L.popup().setContent("This is your bubble!");
+          var popup = L.popup().setContent("This is your bubble!");
 
           // Use the Geolocation API to get your current location
 
@@ -258,7 +301,7 @@
             map.setView([lat, lng], 12);
 
             // Bind the popup to the marker and open it
-            marker.bindPopup(bubblePopup).openPopup();
+            marker.bindPopup(popup).openPopup();
           });
         } else {
           console.log("Geolocation is not available in this browser.");
@@ -285,9 +328,6 @@
             pane: "labels",
           }
         ).addTo(map);
-
-        //
-        //
 
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 5,
