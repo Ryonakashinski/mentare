@@ -249,6 +249,112 @@
           console.log("Geolocation is not available in this browser.");
         }
 
+        // // friend's location
+        const dataFriends = {};
+
+        fetch("../geojson.file/friends_data.json")
+          .then((response) => response.json())
+          .then((geojsonData) => {
+            geojsonData.features.forEach((feature, index) => {
+              const id = `friend_${index}`;
+              const coords = feature.geometry.coordinates;
+              const title = feature.properties.title;
+              const address = feature.properties.address;
+              const nationalFlag = feature.properties.nationalFlag;
+              const regionalFlag = feature.properties.regionalFlag;
+              const website = feature.properties.website;
+
+              // Construct the friend object
+              const friend = {
+                coords: coords,
+                title: title,
+                address: address,
+                nationalFlag: nationalFlag,
+                regionalFlag: regionalFlag,
+                website: website,
+              };
+              // Add the friend object to dataFriends
+              dataFriends[id] = friend;
+            });
+          })
+          .then(() => {
+            for (let key in dataFriends) {
+              var friends = dataFriends[key];
+              L.marker(friends.coords, {
+                titile: friends.title,
+                icon: customFriends,
+              })
+                .bindPopup(
+                  `
+                            <span class = 'popup'>
+                              ${friends.address}
+                              <img src="${friends.nationalFlag}" alt="national flag" width="100"><br>
+                              <img src="${friends.regionalFlag}" alt="regional flag" width="100"><br>
+                              <a href = '${friends.website}' target = '_blank'> Message </a><br>
+                              </span>
+                              `
+                )
+                .addTo(map);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching or processing data:", error);
+          });
+
+        const customFriends = L.icon({
+          iconUrl: "../images/friend.png",
+          iconSize: [30, 30], // The size of the icon
+          iconAnchor: [15, 15], // The anchor point of the icon, relative to its size
+        });
+
+        // Location of my favorite artists.
+        const dataArtists = {};
+
+        fetch("../geojson.file/artists_geo.json")
+          .then((response) => response.json())
+          .then((geojsonData) => {
+            geojsonData.features.forEach((feature, index) => {
+              const id = `artists_${index}`;
+              const coords = feature.geometry.coordinates;
+              const title = feature.properties.title;
+              const address = feature.properties.address;
+              const website = feature.properties.website;
+
+              const artists = {
+                coords: coords,
+                title: title,
+                address: address,
+                website: website,
+              };
+              // Add the friend object to dataFriends
+              dataArtists[id] = artists;
+            });
+          })
+          .then(() => {
+            for (let key in dataArtists) {
+              var artists = dataArtists[key];
+              L.marker(artists.coords, {
+                titile: artists.title,
+                icon: customArtists,
+              })
+                .bindPopup(
+                  `
+                            <span class = 'popup'>
+                              ${artists.address}
+                              <a href = '${artists.website}' target = '_blank'> Link </a><br>
+                              </span>
+                              `
+                )
+                .addTo(map);
+            }
+          });
+
+        const customArtists = L.icon({
+          iconUrl: "../images/crotchet.png",
+          iconSize: [30, 30], // The size of the icon
+          iconAnchor: [15, 15], // The anchor point of the icon, relative to its size
+        });
+
         // a blank map
         map.createPane("labels");
         map.getPane("labels").style.zIndex = 650;

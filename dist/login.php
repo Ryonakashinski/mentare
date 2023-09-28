@@ -8,36 +8,30 @@
   </head>
 
   <body>
-    <div id="signup-box" class="modal">
-      <div class="left">
-        <h1>Signup</h1>
-        <br />
-        <input type="text" id="register-username" placeholder="Username" />
-        <input type="text" id="signup-email" placeholder="Email" />
-        <input type="password" id="signup-password" placeholder="Password" />
-        <input type="submit" id="signup" name="signup" value="Signup" />
-      </div>
-    </div>
+    
+    <form method="POST" action="login_action.php" >
 
     <div id="login-box" class="modal">
       <div class="left">
         <h1>Login</h1>
         <br />
 
-        <input type="text" id="login-email" placeholder="Email" />
-        <input type="password" id="login-password" placeholder="Password" />
-        <input type="submit" id="login" name="login" value="Login" />
+        <input type="text" name= 'email' placeholder="Email" />
+        <input type="password" name='password' placeholder="Password" />
+        <input type="submit" name="login" value="Login" />
       </div>
-      <div class="or">OR</div>
+      Don't have an account yet? <a href="signup.php">Sign up</a>
+      <!-- <div class="or">OR</div>
       <div class="right">
         <span class="loginwith">Log in with<br />social network</span>
         <button class="social-signin facebook">Log in with facebook</button>
         <button class="social-signin X">Log in with X</button>
         <button class="social-signin google">Log in with Google</button>
-      </div>
+      </div> -->
     </div>
 
     <button id="logout">Logout</button>
+    </form>
 
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -71,17 +65,19 @@
       };
 
       // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
-      const auth = getAuth();
+      document.addEventListener("DOMContentLoaded", function () {
+      // const app = initializeApp(firebaseConfig);
+      // const database = getDatabase(app);
+      // const auth = getAuth();
       const signup = document.getElementById("signup");
       const login = document.getElementById("login");
       const logout = document.getElementById("logout");
 
       signup.addEventListener("click", (e) => {
-        var email = document.getElementById("signup-email").value;
-        var password = document.getElementById("signup-password").value;
-        var username = document.getElementById("register-username").value;
+        e.preventDefault(); // Prevent form submission (the default behavior)
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var username = document.getElementById("name").value;
 
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
@@ -104,8 +100,9 @@
       });
 
       login.addEventListener("click", (e) => {
-        var email = document.getElementById("login-email").value;
-        var password = document.getElementById("login-password").value;
+        e.preventDefault(); // Prevent form submission (the default behavior)
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
 
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
@@ -152,6 +149,7 @@
             alert(errorMessage);
           });
       });
+    });
     </script>
   </body>
 </html>
