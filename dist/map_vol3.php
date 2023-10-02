@@ -147,24 +147,7 @@
           deleteComment(commentId); // Delete the comment from Firestore
         });
 
-        // const commentsCollection = collection(db, "comments");
-        // // Create a comment object
-        // const commentData = {
-        //   name: name,
-        //   text: comment,
-        //   latitude: lat,
-        //   longitude: lng,
-        //   time: serverTimestamp(),
-        // };
 
-        // addDoc(commentsCollection, commentData)
-        //   .then(() => {
-        //     console.log("Comment added successfully to Firestore");
-        //     $("#comment").val(""); // Clear the comment input field
-        //   })
-        //   .catch((error) => {
-        //     console.error(`Error adding comment to Firestore: ${error}`);
-        //   });
       }
 
       // Function to load and display comments from local storage
