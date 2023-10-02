@@ -1,25 +1,23 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-   
+    function canCreateComment() {
+      let isSignedIn = request.auth != null;
+      let isNotBanned = exists(
+        /databases/$(database)/documents/banned/$(request.auth.uid)) == false;
+  
+      return isSignedIn && isNotBanned;
+    }
+
+    // Allow all reads and writes for testing purposes
     match /{document=**} {
       allow read, write: if true;
     }
     
-    match/message/{docId}{
-    allow read: if request.auth.uid != null;
-    allow create: if canCreateMessage();
+    // Restrict access to the "comments" collection
+    match /comments/{commentId} {
+      allow read: if request.auth.uid != null;
+      allow create: if canCreateComment();
     }
-    
-    function canCreateMessage(){
-    let isSignedIn = request.auth.uid != null;
-    let isOwner = request.auth.uid == request.resource.data.uid;
-    
-    let isNotBanned = exists(
-    /databases/$(database)/documents/banned/$(request.auth.uid)) == false;
-  
-  return isSignedIn && isOwner && isNotBanned;
-}
-
-}
+  }
 }

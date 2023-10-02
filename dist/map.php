@@ -38,19 +38,9 @@
     <div id="container">
       <div id="map" style="width: 100%; height: 500px;"></div>
 
-      <!-- the text message on user's location -->
-      <!-- <div
-        id="messageOutput"
-        class="map-block"
-        style="
-          position: absolute;
-          top: 20px;
-          left: 20px;
-          background-color: rgba(255, 255, 255, 0.8);
-          padding: 10px;
-          border-radius: 5px;
-        "></div> -->
+      
 
+      
       <!-- Message list container -->
       <ul id="messageList" class="message-list map-block"></ul>
 
