@@ -1,0 +1,31 @@
+{
+    "indexes": [
+      {
+        "collectionGroup": "comments", 
+        "queryScope": "COLLECTION",
+        "fields": [
+            {
+                "fieldPath": "latitude",
+                "order": "ASCENDING"
+              },
+              {
+                "fieldPath": "longitude",
+                "order": "ASCENDING"
+              },
+              {
+                "fieldPath": "name",
+                "order": "ASCENDING"
+              },
+              {
+                "fieldPath": "text",
+                "order": "ASCENDING"
+              },
+              {
+                "fieldPath": "time",
+                "order": "ASCENDING"
+              }
+            ]
+          }
+        ]
+      }
+  

@@ -14,9 +14,7 @@ service cloud.firestore {
     
     function canCreateComment() {
       let isSignedIn = request.auth.uid != null;
-      let isNotBanned = exists(
-        /databases/$(database)/documents/banned/$(request.auth.uid)) == false;
-  
+      let isNotBanned = !exists(/databases/$(database)/documents/banned/$(request.auth.uid));  
       return isSignedIn && isNotBanned;
     }
   }
