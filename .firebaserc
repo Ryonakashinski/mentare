@@ -1,5 +1,16 @@
 {
   "projects": {
-    "default": "map-chat-ryo"
-  }
+    "default": "map-chat-ryo",
+    "map-chat": "map-chat-ryo"
+  },
+  "targets": {
+    "map-chat-ryo": {
+      "hosting": {
+        "mentare": [
+          "map-chat-ryo"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
